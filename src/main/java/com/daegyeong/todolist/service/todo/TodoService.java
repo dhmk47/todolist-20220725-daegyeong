@@ -1,6 +1,9 @@
 package com.daegyeong.todolist.service.todo;
 
+import java.util.List;
+
 import com.daegyeong.todolist.web.dto.todo.CreateTodoReqDto;
+import com.daegyeong.todolist.web.dto.todo.TodoListRespDto;
 
 public interface TodoService {
 	// 추가
@@ -9,4 +12,5 @@ public interface TodoService {
 	// 수정
 	// 삭제
 	// 조회
+	public List<TodoListRespDto> getTodoList(int page, int contentCount) throws Exception;
 }
