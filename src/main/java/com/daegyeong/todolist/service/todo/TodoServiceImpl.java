@@ -42,24 +42,16 @@ public class TodoServiceImpl implements TodoService{
 	}
 
 	@Override
-	public List<TodoListRespDto> getTodoList(int page, int contentCount) throws Exception {
+	public List<TodoListRespDto> getTodoList(String type, int page, int contentCount) throws Exception {
 		
-		List<Todo> todoList = todoRepository.getTodoListOfIndex(createGetTdoListMap(page, contentCount));
-		
-		return createTodoListRespDtos(todoList);
-	}
-	
-	@Override
-	public List<TodoListRespDto> getImportanceTodoList(int page, int contentCount) throws Exception {
-		
-		List<Todo> todoList = todoRepository.getImportanceTodoListOfIndex(createGetTdoListMap(page, contentCount));
-		
+		List<Todo> todoList = todoRepository.getTodoList(createGetTdoListMap(type, page, contentCount));
 		
 		return createTodoListRespDtos(todoList);
 	}
 	
-	private Map<String, Object> createGetTdoListMap(int page, int contentCount) {
+	private Map<String, Object> createGetTdoListMap(String type, int page, int contentCount) {
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("type", type);
 		map.put("index", (page - 1) * contentCount);
 		map.put("count", contentCount);
 		

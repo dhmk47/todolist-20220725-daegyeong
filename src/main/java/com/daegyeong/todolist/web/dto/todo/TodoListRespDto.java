@@ -10,9 +10,10 @@ import lombok.Data;
 public class TodoListRespDto {
 	private int todoCode; 
 	private String todo;
-	private int todoComplete;
+	private boolean todoComplete;
 	private boolean importance;
 	private int totalCount;
+	private int inCompleteCount;
 	private LocalDateTime createDate;
 	private LocalDateTime updateDate;
 }
